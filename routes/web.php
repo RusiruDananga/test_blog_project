@@ -46,3 +46,16 @@ Route::get('/storeCachePermenantly', [App\Http\Controllers\CacheController::clas
 Route::get('/accessor', [App\Http\Controllers\UserController::class, 'index']);
 Route::get('/mutator', [App\Http\Controllers\UserController::class, 'setMutaturValue']);
 Route::get('/casting', [App\Http\Controllers\UserController::class, 'casting']);
+
+//helper file
+Route::get('helper', function(){
+    $imageName = 'example.png';
+    $fullpath = productImagePath($imageName);
+  
+    dd($fullpath);
+});
+Route::get('helper2', function(){
+    $newDateFormat = changeDateFormate(date('Y-m-d'),'m/d/Y');
+  
+    dd($newDateFormat);
+});
