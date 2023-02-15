@@ -25,6 +25,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+//for special permission crud
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('/home', [App\Http\Controllers\User\HomeController::class, 'index'])->name('home');
 
@@ -33,3 +35,14 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('/post/remove/{post_id}', [\App\Http\Controllers\CreateBlogPostsController::class,'remove'])->name('remove');
 
 });
+
+
+//for caching
+Route::get('/storeCache', [App\Http\Controllers\CacheController::class, 'storeCache']);
+Route::get('/retrieveCache', [App\Http\Controllers\CacheController::class, 'retrieveCache']);
+Route::get('/storeCachePermenantly', [App\Http\Controllers\CacheController::class, 'storeCachePermenantly']);
+
+//for mutating and casting
+Route::get('/accessor', [App\Http\Controllers\UserController::class, 'index']);
+Route::get('/mutator', [App\Http\Controllers\UserController::class, 'setMutaturValue']);
+Route::get('/casting', [App\Http\Controllers\UserController::class, 'casting']);
